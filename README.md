@@ -30,3 +30,15 @@ Allumer une led
 	# echo default-on > /sys/class/leds/beaglebone\:\:usr3/trigger
 	# echo none > /sys/class/leds/beaglebone\:\:usr3/trigger
 
+Supprimer les services inutiles
+-------
+
+	# systemctl disable cloud9.service
+	# systemctl disable bone101.service
+
+Mettre à jour
+-----
+
+	# opkg update
+	# opkg upgrade
+
