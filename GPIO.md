@@ -34,7 +34,7 @@ Conversion : 0x0037 = 0b110111
 
 Donc, mode = 0b111 = 7 (GPIO), résistance de pull-up, direction = input
 
-Lire l'état d'une pate
+Lire l'état d'une patte
 -----
 
 GPIO1_6 équivaut à au numéro 38 = 1 * 32 + 6
@@ -64,10 +64,33 @@ Le script src/gpio-int-test.c définit les bonnes constantes.
 
 	poll() GPIO 38 interrupt occurred
 
+PWM
+-----
+
+Apparemment, il n'y aurait pas besoin sur les nouvelles versions du noyau d'activer les clocks des PWM.
+
+	root:/sys/class/pwm/ehrpwm.1:0# echo 0 > run
+	root:/sys/class/pwm/ehrpwm.1:0# echo 0 > duty_percent
+	root:/sys/class/pwm/ehrpwm.1:0# echo 200 > period_freq
+	root:/sys/class/pwm/ehrpwm.1:0# echo 20 > duty_percent
+	root:/sys/class/pwm/ehrpwm.1:0# echo 1 > run
+
+Avant de changer le rapport, il semble bon de vérifier que c'est possible
+
+	root~:/sys/class/pwm/ehrpwm.1:0# cat request
+	ehrpwm.1:0 is free
+
+Fréquence de 10Mhz
+
+	# echo 10000000 > period_freq
 
 Links
 ----
 
 http://bwgz57.wordpress.com/2012/04/15/beaglebone-gpio-irq/
+
 http://www.nathandumont.com/node/250
+
 http://taylanayken.wordpress.com/2012/03/27/getting-started-with-beaglebone/
+
+http://www.gigamegablog.com/2012/03/16/beaglebone-coding-101-buttons-and-pwm/
