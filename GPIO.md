@@ -67,7 +67,9 @@ Le script src/gpio-int-test.c définit les bonnes constantes.
 PWM
 -----
 
-Apparemment, il n'y aurait pas besoin sur les nouvelles versions du noyau d'activer les clocks des PWM.
+Sur les nouvelles version, il n'y a pas besoin d'activer les clocks des PWM.
+
+Après avoir mis le bon mode sur la bonne patte (voir datasheet) :
 
 	root:/sys/class/pwm/ehrpwm.1:0# echo 0 > run
 	root:/sys/class/pwm/ehrpwm.1:0# echo 0 > duty_percent
